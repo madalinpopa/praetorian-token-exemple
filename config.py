@@ -17,3 +17,5 @@ class Config:
     DEBUG = True
     TESTING = True
     SECRET_KEY = os.getenv("SECRET_KEY")
+    SQLALCHEMY_DATABASE_URI = "sqlite:///api.db"
+    JWT_ACCESS_LIFESPAN = {'minutes': 1}
