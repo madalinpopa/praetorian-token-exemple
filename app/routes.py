@@ -19,8 +19,8 @@ def login():
     json_data = request.get_json()
     username = json_data["username"]
     password = json_data["password"]
-
     user = guard.authenticate(username, password)
+    print(user)
     token = guard.encode_jwt_token(user)
     print(token)
     return jsonify({'access_token': token})

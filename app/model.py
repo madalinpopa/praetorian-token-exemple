@@ -2,6 +2,7 @@
 
 # app/model.py
 
+from app.database import Session
 
 class User:
     def __init__(self, username: str, password: str):
@@ -21,14 +22,10 @@ class User:
     def rolenames(self):
         return []
 
-    @property
-    def password(self):
-        return self.password
-
     @classmethod
     def lookup(cls, username):
-        return cls.query.filter_by(username=username).one_or_none()
+        return Session.query(cls).filter_by(username=username).one_or_none()
 
     @classmethod
     def identify(cls, id):
-        return cls.query.get(id)
+        return Session.query(cls).get(id)
