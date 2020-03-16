@@ -23,4 +23,4 @@ def login():
     print(user)
     token = guard.encode_jwt_token(user)
     print(token)
-    return jsonify({'access_token': token})
+    return jsonify({"access_token": token})

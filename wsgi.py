@@ -13,6 +13,7 @@ app = create_app()
 app.cli.add_command(create_users)
 app.cli.add_command(user)
 
+
 @app.before_request
 def mapper():
     start_mapper()
