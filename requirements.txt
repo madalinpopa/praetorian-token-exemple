@@ -1,0 +1,5 @@
+Flask==1.1.1
+flask-praetorian==1.0.0
+Flask-SQLAlchemy==2.4.1
+mypy==0.770
+black==19.10b0
