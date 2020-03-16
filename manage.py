@@ -28,5 +28,5 @@ def create_users():
 @with_appcontext
 def user():
     start_mapper()
-    user = Session.query(User).filter_by(username="user1").first()
-    print(user.id)
+    user = guard.authenticate("user1", "secret1")
+    print(user)
