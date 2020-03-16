@@ -3,6 +3,7 @@
 # app/routes.py
 
 from flask import Blueprint, jsonify, request
+from flask_praetorian import auth_required
 
 from app import guard
 
@@ -20,7 +21,18 @@ def login():
     username = json_data["username"]
     password = json_data["password"]
     user = guard.authenticate(username, password)
-    print(user)
     token = guard.encode_jwt_token(user)
-    print(token)
+    return jsonify({"access_token": token})
+
+
+@api.route("/protected")
+@auth_required
+def protected():
+    return jsonify({"result": "This is a protected page!"})
+
+
+@api.route("/refresh")
+def refresh():
+    json_data = request.get_json()
+    token = guard.refresh_jwt_token(json_data["token"])
     return jsonify({"access_token": token})
