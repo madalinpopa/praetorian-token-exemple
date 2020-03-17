@@ -4,7 +4,7 @@
 
 from app import create_app
 from app.orm import start_mapper
-from database import db_session
+from app.database import db_session
 from manage import init
 
 app = create_app()

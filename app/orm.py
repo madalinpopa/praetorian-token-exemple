@@ -5,9 +5,8 @@
 from sqlalchemy import Column, ForeignKey, Integer, MetaData, String, Table
 from sqlalchemy.orm import mapper, relationship
 
-from app.database import Session
 from app.model import User
-from database import metadata
+from app.database import metadata
 
 
 user = Table(
