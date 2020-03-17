@@ -10,7 +10,7 @@ import config
 engine = create_engine(config.Config().SQLALCHEMY_DATABASE_URI)
 metadata = MetaData()
 db_session = scoped_session(
-    sessionmaker(bind=engine, autocommit=False, autoflash=False,)
+    sessionmaker(bind=engine, autocommit=False, autoflush=False,)
 )
 
 

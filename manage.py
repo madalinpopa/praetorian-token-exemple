@@ -22,8 +22,8 @@ def init():
     user2 = User(username="user2", password=guard.hash_password("secret2"))
     user3 = User(username="user3", password=guard.hash_password("secret3"))
 
-    Session.add_all([user1, user2, user3])
-    Session.commit()
+    db_session.add_all([user1, user2, user3])
+    db_session.commit()
 
 
 @click.command(name="user")
