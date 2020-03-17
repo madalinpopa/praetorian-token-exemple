@@ -17,5 +17,6 @@ db_session = scoped_session(
 def init_prod_db():
     metadata.create_all(bind=engine)
 
+
 def init_test_db():
     metadata.create_all(bind=engine)

@@ -12,9 +12,9 @@ from app.database import db_session, init_prod_db, init_test_db
 from app.orm import start_mapper, metadata
 
 
-@click.command(name="create_users")
+@click.command(name="init")
 @with_appcontext
-def create_users():
+def init():
     start_mapper()
     init_prod_db()
 

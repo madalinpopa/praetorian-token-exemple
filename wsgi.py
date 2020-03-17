@@ -4,13 +4,12 @@
 
 from app import create_app
 from app.orm import start_mapper
-from manage import create_users, user
 from database import db_session
+from manage import init
 
 app = create_app()
 
-app.cli.add_command(create_users)
-app.cli.add_command(user)
+app.cli.add_command(init)
 
 
 @app.before_first_request
