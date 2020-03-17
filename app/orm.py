@@ -7,8 +7,8 @@ from sqlalchemy.orm import mapper, relationship
 
 from app.database import Session
 from app.model import User
+from database import metadata
 
-metadata = MetaData()
 
 user = Table(
     "user",

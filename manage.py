@@ -8,7 +8,7 @@ from flask.cli import with_appcontext
 from app import guard
 from app.model import User
 
-from app.database import Session, engine
+from app.database import db_session, init_prod_db, init_test_db
 from app.orm import start_mapper, metadata
 
 
@@ -16,7 +16,7 @@ from app.orm import start_mapper, metadata
 @with_appcontext
 def create_users():
     start_mapper()
-    metadata.create_all(bind=engine)
+    init_prod_db()
 
     user1 = User("user1", guard.hash_password("secret1"))
     user2 = User(username="user2", password=guard.hash_password("secret2"))

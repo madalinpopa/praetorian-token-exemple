@@ -10,7 +10,7 @@ def test_home(client):
     assert rv.status_code == 200
 
 
-#def test_login(client):
-#    data = {"username": "user1", "password": "secret1" }
-#    rv = client.post("/login", data=json.dumps(data), content_type="application/json")
-#    assert rv.status_code == 200
+def test_login(client):
+    data = json.dumps({"username": "user1", "password": "secret1"})
+    rv = client.post("/login", data=data, content_type="application/json")
+    assert rv.status_code == 200

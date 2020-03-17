@@ -2,10 +2,12 @@
 
 # app/model.py
 
-from app.database import Session
+from app.database import db_session
 
 
 class User:
+    query = db_session.query_property()
+
     def __init__(self, username: str, password: str):
         self.username = username
         self.password = password
@@ -25,8 +27,8 @@ class User:
 
     @classmethod
     def lookup(cls, username):
-        return Session.query(cls).filter_by(username=username).one_or_none()
+        return cls.query.filter_by(username=username).one_or_none()
 
     @classmethod
     def identify(cls, id):
-        return Session.query(cls).get(id)
+        return cls.query.get(id)
