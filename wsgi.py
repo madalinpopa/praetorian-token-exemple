@@ -18,6 +18,7 @@ app.cli.add_command(testdb)
 def start_model_mapper():
     start_mapper()
 
+
 @app.teardown_appcontext
 def cleanup(resp_or_exception):
     db_session.remove()
