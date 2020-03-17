@@ -3,8 +3,8 @@
 # wsgi.py
 
 from sqlalchemy.orm import clear_mappers
+
 from app import create_app
-from app.database import Session
 from app.orm import start_mapper
 from manage import create_users, user
 
