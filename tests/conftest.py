@@ -4,31 +4,17 @@
 # tests/conftest.py
 
 import pytest
-from sqlalchemy.orm import clear_mappers, scoped_session, sessionmaker
-from sqlalchemy import create_engine
 
 from app import guard
 from app import create_app
 
-from app.orm import metadata, start_mapper
-
-
-@pytest.fixture
-def engine():
-    engine = create_engine("sqlite:///test.db", echo=True)
-    metadata.create_all(bind=engine)
-    yield engine
-
+from app.database import init_test_db
+from app.orm import start_mapper
 
 @pytest.fixture
-def session(engine):
-    session = scoped_session(sessionmaker(bind=engine))
-
-
-@pytest.fixture
-def app_instance(engine, session):
+def app_instance():
     app_test = create_app()
-    start_mapper()
+
     yield app_test
 
 

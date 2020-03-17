@@ -14,7 +14,7 @@ db_session = scoped_session(
     sessionmaker(bind=engine, autocommit=False, autoflush=False,)
 )
 
-test_session = scoped_session(
+db_test_session = scoped_session(
     sessionmaker(bind=test_engine, autocommit=False, autoflush=False)
 )
 
