@@ -8,13 +8,13 @@ from flask.cli import with_appcontext
 from app import guard
 from app.model import User
 
-from app.database import db_session, init_prod_db, init_test_db
+from app.database import db_session, init_prod_db, init_test_db, test_session
 from app.orm import start_mapper, metadata
 
 
-@click.command(name="init")
+@click.command(name="init_prod")
 @with_appcontext
-def init():
+def init_prod():
     start_mapper()
     init_prod_db()
 
@@ -26,9 +26,20 @@ def init():
     db_session.commit()
 
 
-@click.command(name="user")
+@click.command(name="init_test")
 @with_appcontext
-def user():
+def init_test():
     start_mapper()
-    user = guard.authenticate("user1", "secret1")
+    init_test_db()
+
+    user1 = User(username="user1", password=guard.hash_password("secret1"))
+    test_session.add(user1)
+    test_session.commit()
+
+
+@click.command(name="testdb")
+@with_appcontext
+def testdb():
+    start_mapper()
+    user = User.query.get(1)
     print(user)
